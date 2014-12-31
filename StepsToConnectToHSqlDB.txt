@@ -1,0 +1,9 @@
+1) Type following command to run the HSQL database explorer
+java -cp C:\Users\Admin\.m2\repository\org\hsqldb\hsqldb\2.3.2\hsqldb-2.3.2.jar org.hsqldb.util.DatabaseManagerSwing
+
+2) Extract the dishdb.zip file at any location in you machin e.g. E:\ApplicationsNew\dishdb
+
+3) Give the following path as the DB URL in the databse explorer to connect to the database
+jdbc:hsqldb:file:E:\ApplicationsNew\dishdb\dishdb
+
+4) modify the db-config.xml file in the DishDiscoveryApplicationDAO project to change the database URL as well
