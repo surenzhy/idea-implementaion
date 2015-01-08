@@ -1,8 +1,10 @@
 package com.dishdiscovery.dao;
 
-import com.dishdiscovery.dao.data.DishCategoryVO;
+import java.util.List;
+
+import com.dishdiscovery.dao.data.DishCategoriesVO;
 import com.dishdiscovery.dao.exception.DAOException;
 
 public interface IDishDiscoveryDAO {
-	public DishCategoryVO getAllDishCategories() throws DAOException;
+	public List<DishCategoriesVO> getAllDishCategories() throws DAOException;
 }

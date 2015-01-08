@@ -1,10 +1,12 @@
 package com.dishdiscovery.service.rest.handlers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dishdiscovery.business.service.IDishDiscoveryService;
-import com.dishdiscovery.dao.data.DishCategoryVO;
+import com.dishdiscovery.dao.data.DishCategoriesVO;
 import com.dishdiscovery.service.rest.request.GenericRequest;
 import com.dishdiscovery.service.rest.request.data.GetDishcategoryRequest;
 import com.dishdiscovery.service.rest.response.data.GetDishCategoryResponse;
@@ -22,14 +24,16 @@ public class GetDishCategoryHandler extends
 	@Override
 	protected GetDishCategoryResponse processRequest(
 			GetDishcategoryRequest request) {
-		DishCategoryVO dishCategories = dishService.getAllDishCategories();
+		List<DishCategoriesVO> dishCategories = dishService
+				.getAllDishCategories();
 		return convertServiceResponseToWebResponse(dishCategories);
 	}
 
 	private GetDishCategoryResponse convertServiceResponseToWebResponse(
-			DishCategoryVO dishCategories) {
-
-		return new GetDishCategoryResponse();
+			List<DishCategoriesVO> dishCategories) {
+		GetDishCategoryResponse response = new GetDishCategoryResponse();
+		response.setDshCategories(dishCategories);
+		return response;
 	}
 
 }

@@ -7,7 +7,7 @@
 <hibernate-configuration>
 
 	<session-factory>
-		<property name="hibernate.default_schema">PUBLIC</property>
+		<!-- <property name="hibernate.default_schema">PUBLIC</property> -->
 
 		<!-- JDBC connection pool (use the built-in) -->
 		<property name="connection.pool_size">1</property>

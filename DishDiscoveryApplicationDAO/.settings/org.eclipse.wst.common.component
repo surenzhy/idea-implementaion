@@ -2,5 +2,6 @@
     <wb-module deploy-name="DishDiscoveryApplicationDAO">
         <wb-resource deploy-path="/" source-path="/src"/>
         <wb-resource deploy-path="/" source-path="/resources"/>
+        <wb-resource deploy-path="/" source-path="/test"/>
     </wb-module>
 </project-modules>

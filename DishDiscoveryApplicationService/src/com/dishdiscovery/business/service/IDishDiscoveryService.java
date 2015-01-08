@@ -1,9 +1,11 @@
 package com.dishdiscovery.business.service;
 
-import com.dishdiscovery.dao.data.DishCategoryVO;
+import java.util.List;
+
+import com.dishdiscovery.dao.data.DishCategoriesVO;
 import com.dishdiscovery.service.business.exception.ServiceException;
 
 public interface IDishDiscoveryService {
 
-	public DishCategoryVO getAllDishCategories() throws ServiceException;
+	public List<DishCategoriesVO> getAllDishCategories() throws ServiceException;
 }
