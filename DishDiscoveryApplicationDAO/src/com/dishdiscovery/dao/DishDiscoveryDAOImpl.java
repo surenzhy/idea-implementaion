@@ -5,12 +5,16 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.dishdiscovery.dao.data.DishCategoriesVO;
+import com.dishdiscovery.dao.data.DishSummaryVO;
 import com.dishdiscovery.dao.entity.DshCat;
+import com.dishdiscovery.dao.entity.DshMtda;
 import com.dishdiscovery.dao.exception.DAOException;
+import com.dishdiscovery.dao.mapper.DishSummaryMapper;
 
 @Repository
 public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
@@ -36,5 +40,16 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 		}
 		return allDishCategories;
 	}
+
+	public List<DishSummaryVO> getDishSummaryListByName(String name)
+			throws DAOException {
+		List<DshMtda> disMtdaList = new ArrayList<DshMtda>();
+		/*@SuppressWarnings("unchecked")
+		List<DshMtda> disMtdaList = sessionFactory.openSession()
+				.createCriteria(DshMtda.class).add(Restrictions.ilike("dshNme", name)).list();
+*/		
+		return DishSummaryMapper.convertDBObjectToBusinessObject(disMtdaList);
+	}
+	
 
 }
