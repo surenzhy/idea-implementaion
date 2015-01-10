@@ -3,7 +3,7 @@ package com.dishdiscovery.dao.data;
 import java.io.Serializable;
 
 public class DishCategoriesVO implements Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5820767735745418023L;
 
 	private long dshCatId;
 

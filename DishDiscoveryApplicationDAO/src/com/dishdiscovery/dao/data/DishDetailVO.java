@@ -1,42 +1,49 @@
 package com.dishdiscovery.dao.data;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 
 public class DishDetailVO extends DishSummaryVO {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String address;
-	private String price;
-	private String dshTypNme;
-	private String dshCatNme;
 	
+	private static final long serialVersionUID = -6819314398948303901L;
 	
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
-	public String getDshTypNme() {
-		return dshTypNme;
-	}
-	public void setDshTypNme(String dshTypNme) {
-		this.dshTypNme = dshTypNme;
-	}
-	public String getDshCatNme() {
-		return dshCatNme;
-	}
-	public void setDshCatNme(String dshCatNme) {
-		this.dshCatNme = dshCatNme;
-	}
+	private long dshDtlId;
+	private BigDecimal dshPrc;
+	private List<UserRivewVO> userRivewList;
+	private List<UserLikeVO> userLikeList;
+	private String dshAvlStsCde;
 	
+	public long getDshDtlId() {
+		return dshDtlId;
+	}
+	public void setDshDtlId(long dshDtlId) {
+		this.dshDtlId = dshDtlId;
+	}
+	public BigDecimal getDshPrc() {
+		return dshPrc;
+	}
+	public void setDshPrc(BigDecimal dshPrc) {
+		this.dshPrc = dshPrc;
+	}
+	public List<UserRivewVO> getUserRivewList() {
+		return userRivewList;
+	}
+	public void setUserRivewList(List<UserRivewVO> userRivewList) {
+		this.userRivewList = userRivewList;
+	}
+	public String getDshAvlStsCde() {
+		return dshAvlStsCde;
+	}
+	public void setDshAvlStsCde(String dshAvlStsCde) {
+		this.dshAvlStsCde = dshAvlStsCde;
+	}
+	public List<UserLikeVO> getUserLikeList() {
+		return userLikeList;
+	}
+	public void setUserLikeList(List<UserLikeVO> userLikeList) {
+		this.userLikeList = userLikeList;
+	}
 	
 	
 }

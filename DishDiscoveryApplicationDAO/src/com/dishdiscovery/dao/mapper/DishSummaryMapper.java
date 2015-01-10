@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dishdiscovery.dao.data.DishSummaryVO;
+import com.dishdiscovery.dao.data.RestDetailVO;
 import com.dishdiscovery.dao.entity.DshMtda;
 
 public class DishSummaryMapper {
@@ -16,20 +17,28 @@ public class DishSummaryMapper {
 		summaryVo1.setDishId(1);
 		summaryVo1.setDishName("Paneer Tikka");
 		summaryVo1.setImgURL("http://test.png");
-		summaryVo1.setLndLnNumber("020 466665");
-		summaryVo1.setMobileNumber("+91 464568468");
-		summaryVo1.setRating("****");
-		summaryVo1.setRestName("Green Park");
+		RestDetailVO restVO = new RestDetailVO();
+		restVO.setLndLneNbr("020 466665");
+		restVO.setMblNbr("+91 464568468");
+		restVO.setResDtlId(12L);
+		restVO.setResAddr("Baner Road");
+		restVO.setResNme("Green Park");
+		summaryVo1.setRestDetail(restVO);
 		
 		DishSummaryVO summaryVo2 = new DishSummaryVO(); 
 		
-		summaryVo2.setDishId(1);
+		summaryVo2.setDishId(2);
 		summaryVo2.setDishName("Chicken Masala");
 		summaryVo2.setImgURL("http://test.png");
-		summaryVo2.setLndLnNumber("020 466665");
-		summaryVo2.setMobileNumber("+91 464568468");
-		summaryVo2.setRating("***");
-		summaryVo2.setRestName("XYZ Park");
+		RestDetailVO restVO1 = new RestDetailVO();
+		restVO1.setLndLneNbr("020 466665");
+		restVO1.setMblNbr("+91 464568468");
+		restVO1.setResDtlId(12L);
+		restVO1.setResAddr("Wakad Hinjewadi");
+		restVO1.setResNme("One 2 One");
+		
+		summaryVo2.setRestDetail(restVO1);
+		
 		dishSummaryList.add(summaryVo1);
 		dishSummaryList.add(summaryVo2);
 		
