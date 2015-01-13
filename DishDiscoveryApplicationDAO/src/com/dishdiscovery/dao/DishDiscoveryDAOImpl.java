@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -40,13 +41,14 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 		return allDishCategories;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<DishSummaryVO> getDishSummaryListByName(String name)
 			throws DAOException {
-		List<DshMtda> disMtdaList = new ArrayList<DshMtda>();
-		/*@SuppressWarnings("unchecked")
-		List<DshMtda> disMtdaList = sessionFactory.openSession()
+		List<DshMtda> disMtdaList = null;
+		
+		 disMtdaList = sessionFactory.openSession()
 				.createCriteria(DshMtda.class).add(Restrictions.ilike("dshNme", name)).list();
-*/		
+		
 		return DishSummaryMapper.convertDBObjectToBusinessObject(disMtdaList);
 	}
 	

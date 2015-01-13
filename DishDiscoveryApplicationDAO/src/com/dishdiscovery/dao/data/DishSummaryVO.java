@@ -1,6 +1,7 @@
 package com.dishdiscovery.dao.data;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class DishSummaryVO implements Serializable{
 
@@ -8,7 +9,7 @@ public class DishSummaryVO implements Serializable{
 	private long dishId;
 	private String dishName;
 	private String imgURL;
-	private RestDetailVO restDetail;
+	private List<RestDetailVO> restDetailList;
 	
 	public long getDishId() {
 		return dishId;
@@ -28,12 +29,11 @@ public class DishSummaryVO implements Serializable{
 	public void setImgURL(String imgURL) {
 		this.imgURL = imgURL;
 	}
-	public RestDetailVO getRestDetail() {
-		return restDetail;
+	public List<RestDetailVO> getRestDetailList() {
+		return restDetailList;
 	}
-	public void setRestDetail(RestDetailVO restDetail) {
-		this.restDetail = restDetail;
+	public void setRestDetailList(List<RestDetailVO> restDetailList) {
+		this.restDetailList = restDetailList;
 	}
-	
 	
 }

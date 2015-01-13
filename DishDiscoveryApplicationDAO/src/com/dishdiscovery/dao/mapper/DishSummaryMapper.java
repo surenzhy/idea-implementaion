@@ -5,15 +5,41 @@ import java.util.List;
 
 import com.dishdiscovery.dao.data.DishSummaryVO;
 import com.dishdiscovery.dao.data.RestDetailVO;
+import com.dishdiscovery.dao.entity.DshDtl;
 import com.dishdiscovery.dao.entity.DshMtda;
+import com.dishdiscovery.dao.entity.ResDtl;
 
 public class DishSummaryMapper {
 	
-	public static List<DishSummaryVO> convertDBObjectToBusinessObject(List<DshMtda> dshMtda){
-		List<DishSummaryVO> dishSummaryList = new ArrayList<DishSummaryVO>();
-		//TODO map data from the result set, right now returning dummy data for testing purpose
+	public static List<DishSummaryVO> convertDBObjectToBusinessObject(List<DshMtda> dshMtdaList){
 		
-		DishSummaryVO summaryVo1 = new DishSummaryVO(); 
+		List<DishSummaryVO> dishSummaryList = new ArrayList<DishSummaryVO>();
+		
+		for (DshMtda dshmtda : dshMtdaList) {
+			DishSummaryVO summaryVo = new DishSummaryVO();
+			summaryVo.setDishId(dshmtda.getDshMtdaId());
+			summaryVo.setDishName(dshmtda.getDshNme());
+			List<RestDetailVO> restDetlVOList = new ArrayList<RestDetailVO>();
+			List<DshDtl> dshDtlList = new ArrayList<DshDtl>();
+			for (DshDtl dshDtl : dshDtlList) {
+				RestDetailVO restVO = new RestDetailVO();
+				ResDtl restDtl = dshDtl.getResDtl();
+				if(restDtl!=null){
+					restVO.setResDtlId(restDtl.getResDtlId());
+					restVO.setResNme(restDtl.getResNme());
+					restVO.setResAddr(restDtl.getResAddr());
+					restVO.setMblNbr(restDtl.getMblNbr());
+					restVO.setLndLneNbr(restDtl.getLndLneNbr());
+					restDetlVOList.add(restVO);
+				}
+			}
+			
+			summaryVo.setRestDetailList(restDetlVOList);
+			dishSummaryList.add(summaryVo);
+			
+		}
+		
+		/*DishSummaryVO summaryVo1 = new DishSummaryVO(); 
 		summaryVo1.setDishId(1);
 		summaryVo1.setDishName("Paneer Tikka");
 		summaryVo1.setImgURL("http://test.png");
@@ -23,7 +49,9 @@ public class DishSummaryMapper {
 		restVO.setResDtlId(12L);
 		restVO.setResAddr("Baner Road");
 		restVO.setResNme("Green Park");
-		summaryVo1.setRestDetail(restVO);
+		List<RestDetailVO> restDetlVOList1 = new ArrayList<RestDetailVO>();
+		restDetlVOList1.add(restVO);
+		summaryVo1.setRestDetailList(restDetlVOList1);
 		
 		DishSummaryVO summaryVo2 = new DishSummaryVO(); 
 		
@@ -37,10 +65,12 @@ public class DishSummaryMapper {
 		restVO1.setResAddr("Wakad Hinjewadi");
 		restVO1.setResNme("One 2 One");
 		
-		summaryVo2.setRestDetail(restVO1);
+		List<RestDetailVO> restDetlVOList2 = new ArrayList<RestDetailVO>();
+		restDetlVOList1.add(restVO1);
+		summaryVo1.setRestDetailList(restDetlVOList2);
 		
 		dishSummaryList.add(summaryVo1);
-		dishSummaryList.add(summaryVo2);
+		dishSummaryList.add(summaryVo2);*/
 		
 		return dishSummaryList;
 		
