@@ -20,7 +20,7 @@ public class DishSummaryMapper {
 			summaryVo.setDishId(dshmtda.getDshMtdaId());
 			summaryVo.setDishName(dshmtda.getDshNme());
 			List<RestDetailVO> restDetlVOList = new ArrayList<RestDetailVO>();
-			List<DshDtl> dshDtlList = new ArrayList<DshDtl>();
+			List<DshDtl> dshDtlList = dshmtda.getDshDtls();
 			for (DshDtl dshDtl : dshDtlList) {
 				RestDetailVO restVO = new RestDetailVO();
 				ResDtl restDtl = dshDtl.getResDtl();
@@ -39,38 +39,6 @@ public class DishSummaryMapper {
 			
 		}
 		
-		/*DishSummaryVO summaryVo1 = new DishSummaryVO(); 
-		summaryVo1.setDishId(1);
-		summaryVo1.setDishName("Paneer Tikka");
-		summaryVo1.setImgURL("http://test.png");
-		RestDetailVO restVO = new RestDetailVO();
-		restVO.setLndLneNbr("020 466665");
-		restVO.setMblNbr("+91 464568468");
-		restVO.setResDtlId(12L);
-		restVO.setResAddr("Baner Road");
-		restVO.setResNme("Green Park");
-		List<RestDetailVO> restDetlVOList1 = new ArrayList<RestDetailVO>();
-		restDetlVOList1.add(restVO);
-		summaryVo1.setRestDetailList(restDetlVOList1);
-		
-		DishSummaryVO summaryVo2 = new DishSummaryVO(); 
-		
-		summaryVo2.setDishId(2);
-		summaryVo2.setDishName("Chicken Masala");
-		summaryVo2.setImgURL("http://test.png");
-		RestDetailVO restVO1 = new RestDetailVO();
-		restVO1.setLndLneNbr("020 466665");
-		restVO1.setMblNbr("+91 464568468");
-		restVO1.setResDtlId(12L);
-		restVO1.setResAddr("Wakad Hinjewadi");
-		restVO1.setResNme("One 2 One");
-		
-		List<RestDetailVO> restDetlVOList2 = new ArrayList<RestDetailVO>();
-		restDetlVOList1.add(restVO1);
-		summaryVo1.setRestDetailList(restDetlVOList2);
-		
-		dishSummaryList.add(summaryVo1);
-		dishSummaryList.add(summaryVo2);*/
 		
 		return dishSummaryList;
 		

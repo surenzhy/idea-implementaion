@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dishdiscovery.dao.IDishDiscoveryDAO;
 import com.dishdiscovery.dao.data.DishCategoriesVO;
+import com.dishdiscovery.dao.data.DishDetailVO;
 import com.dishdiscovery.dao.data.DishSummaryVO;
 import com.dishdiscovery.service.business.exception.ServiceException;
 
@@ -25,6 +26,12 @@ public class DishDiscoveryServiceImpl implements IDishDiscoveryService {
 	public List<DishSummaryVO> getDishSummaryListByName(String name)
 			throws ServiceException {
 		return dishDiscoveryDAO.getDishSummaryListByName(name);
+	}
+	
+	public DishDetailVO getDishDetails(String dishId)
+			throws ServiceException {
+		return dishDiscoveryDAO.getDishDetails(dishId);
+
 	}
 
 
