@@ -24,7 +24,7 @@
 		<property name="url"
 			value="jdbc:oracle:thin:@dshdb.cvbkmp40wqxm.ap-southeast-1.rds.amazonaws.com:1521/DSHDB" />
 		<property name="username" value="DSH_DSC_OWNER" />
-		<property name="password" value="DSH_DSC_OWNER#01" />
+		<property name="password" value="Q1W2E3R4" />
 	</bean>
 
 	<bean id="txManager"
