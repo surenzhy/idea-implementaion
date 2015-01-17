@@ -16,12 +16,15 @@ public class DishSummaryMapper {
 		List<DishSummaryVO> dishSummaryList = new ArrayList<DishSummaryVO>();
 		
 		for (DshMtda dshmtda : dshMtdaList) {
-			DishSummaryVO summaryVo = new DishSummaryVO();
-			summaryVo.setDishId(dshmtda.getDshMtdaId());
-			summaryVo.setDishName(dshmtda.getDshNme());
-			List<RestDetailVO> restDetlVOList = new ArrayList<RestDetailVO>();
+			
 			List<DshDtl> dshDtlList = dshmtda.getDshDtls();
 			for (DshDtl dshDtl : dshDtlList) {
+				
+				DishSummaryVO summaryVo = new DishSummaryVO();
+				summaryVo.setDishId(dshDtl.getDshDtlId());
+				summaryVo.setDishName(dshDtl.getDshMtda().getDshNme());
+				summaryVo.setIngredient(dshDtl.getDshMtda().getDftIng());
+				
 				RestDetailVO restVO = new RestDetailVO();
 				ResDtl restDtl = dshDtl.getResDtl();
 				if(restDtl!=null){
@@ -30,15 +33,13 @@ public class DishSummaryMapper {
 					restVO.setResAddr(restDtl.getResAddr());
 					restVO.setMblNbr(restDtl.getMblNbr());
 					restVO.setLndLneNbr(restDtl.getLndLneNbr());
-					restDetlVOList.add(restVO);
 				}
+				summaryVo.setRestDetailVO(restVO);
+				dishSummaryList.add(summaryVo);
 			}
 			
-			summaryVo.setRestDetailList(restDetlVOList);
-			dishSummaryList.add(summaryVo);
 			
 		}
-		
 		
 		return dishSummaryList;
 		
