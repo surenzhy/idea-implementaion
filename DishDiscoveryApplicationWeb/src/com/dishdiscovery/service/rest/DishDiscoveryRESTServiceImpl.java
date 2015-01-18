@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dishdiscovery.service.rest.handlers.Handler;
-import com.dishdiscovery.service.rest.request.data.GetDishDetailsRequest;
+import com.dishdiscovery.service.rest.request.data.GetDishDetailRequest;
 import com.dishdiscovery.service.rest.request.data.GetDishSummaryRequest;
 import com.dishdiscovery.service.rest.request.data.GetDishcategoryRequest;
 import com.dishdiscovery.service.rest.response.data.GetDishCategoryResponse;
-import com.dishdiscovery.service.rest.response.data.GetDishDetailsResponse;
+import com.dishdiscovery.service.rest.response.data.GetDishDetailResponse;
 import com.dishdiscovery.service.rest.response.data.GetDishSummaryResponse;
 
 @Component
@@ -25,7 +25,7 @@ public class DishDiscoveryRESTServiceImpl implements IDishDiscoveryRESTService {
 	@Autowired
 	Handler<GetDishSummaryRequest, GetDishSummaryResponse> dishSummaryHandler;
 	@Autowired
-	Handler<GetDishDetailsRequest, GetDishDetailsResponse> dishDetailsHandler;
+	Handler<GetDishDetailRequest, GetDishDetailResponse> dishDetailHandler;
 
 	@GET
 	@Path("categories")
@@ -55,11 +55,11 @@ public class DishDiscoveryRESTServiceImpl implements IDishDiscoveryRESTService {
 	@GET
 	@Path("dish/detail/{dishId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public GetDishDetailsResponse getDishDetail(
+	public GetDishDetailResponse getDishDetail(
 			@PathParam("dishId") String dishId) {
-		GetDishDetailsRequest dishDetailsRequest = new GetDishDetailsRequest();
+		GetDishDetailRequest dishDetailsRequest = new GetDishDetailRequest();
 		dishDetailsRequest.setDishId(dishId);
-		return dishDetailsHandler.execute(dishDetailsRequest);
+		return dishDetailHandler.execute(dishDetailsRequest);
 
 	}
 }
