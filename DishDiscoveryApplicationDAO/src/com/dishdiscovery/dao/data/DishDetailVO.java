@@ -14,6 +14,9 @@ public class DishDetailVO extends DishSummaryVO {
 	private List<UserLikeVO> userLikeList;
 	private String dshAvlStsCde;
 	
+	private DishCatVO dshCatVO;
+	private DishTypeVO dshTypVO;
+	
 	public long getDshDtlId() {
 		return dshDtlId;
 	}
@@ -44,6 +47,19 @@ public class DishDetailVO extends DishSummaryVO {
 	public void setUserLikeList(List<UserLikeVO> userLikeList) {
 		this.userLikeList = userLikeList;
 	}
+	public DishCatVO getDshCatVO() {
+		return dshCatVO;
+	}
+	public void setDshCatVO(DishCatVO dshCatVO) {
+		this.dshCatVO = dshCatVO;
+	}
+	public DishTypeVO getDshTypVO() {
+		return dshTypVO;
+	}
+	public void setDshTypVO(DishTypeVO dshTypVO) {
+		this.dshTypVO = dshTypVO;
+	}
+	
 	
 	
 }

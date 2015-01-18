@@ -73,7 +73,7 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 	public DishDetailVO getDishDetails(String dishId) throws DAOException {
 
 		DshDtl dishDetailBO = (DshDtl) sessionFactory.openSession()
-				.createCriteria(DshDtl.class).add(Restrictions.idEq(dishId));
+				.createCriteria(DshDtl.class).add(Restrictions.idEq(Long.valueOf(dishId))).uniqueResult();
 
 		return DishDetailMapper.convertDBObjectToBusinessObject(dishDetailBO);
 	}

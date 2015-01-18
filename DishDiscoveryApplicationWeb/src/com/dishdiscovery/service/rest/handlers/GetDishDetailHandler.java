@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 import com.dishdiscovery.business.service.IDishDiscoveryService;
 import com.dishdiscovery.dao.data.DishDetailVO;
 import com.dishdiscovery.service.rest.request.GenericRequest;
-import com.dishdiscovery.service.rest.request.data.GetDishDetailsRequest;
-import com.dishdiscovery.service.rest.response.data.GetDishDetailsResponse;
+import com.dishdiscovery.service.rest.request.data.GetDishDetailRequest;
+import com.dishdiscovery.service.rest.response.data.GetDishDetailResponse;
 import com.dishdiscovery.service.rest.validators.IRequestValidator;
 @Component
-public class GetDishDetailsHandler extends DefaultRequestHandler<GetDishDetailsRequest, GetDishDetailsResponse>{
+public class GetDishDetailHandler extends DefaultRequestHandler<GetDishDetailRequest, GetDishDetailResponse>{
 
 	@Autowired
 	IDishDiscoveryService dishService;
@@ -19,18 +19,18 @@ public class GetDishDetailsHandler extends DefaultRequestHandler<GetDishDetailsR
 	
 	
 	@Override
-	protected GetDishDetailsResponse processRequest(
-			GetDishDetailsRequest request) {
+	protected GetDishDetailResponse processRequest(
+			GetDishDetailRequest request) {
 		
 		String dishId = request.getDishId();
 		DishDetailVO dishDetails = dishService.getDishDetails(dishId);
 		return convertServiceResponseToWebResponse(dishDetails);
 	}
 
-	private GetDishDetailsResponse convertServiceResponseToWebResponse(
+	private GetDishDetailResponse convertServiceResponseToWebResponse(
 			DishDetailVO dishDetails) {
-		GetDishDetailsResponse response = new GetDishDetailsResponse();
-		response.setDishDetails(dishDetails);
+		GetDishDetailResponse response = new GetDishDetailResponse();
+		response.setDishDetail(dishDetails);
 		return response;
 	}
 	
