@@ -4,7 +4,7 @@ import com.dishdiscovery.service.rest.request.GenericRequest;
 
 public class GetDishDetailsRequest  extends GenericRequest{
 	
-	String dishId;
+	private String dishId;
 
 	public String getDishId() {
 		return dishId;

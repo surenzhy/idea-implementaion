@@ -23,9 +23,9 @@ public class DishDiscoveryServiceImpl implements IDishDiscoveryService {
 
 	}
 
-	public List<DishSummaryVO> getDishSummaryListByName(String name)
+	public List<DishSummaryVO> getDishSummaryListByName(String name, int pageSize, int pageNo)
 			throws ServiceException {
-		return dishDiscoveryDAO.getDishSummaryListByName(name);
+		return dishDiscoveryDAO.getDishSummaryListByName(name, pageSize, pageNo);
 	}
 	
 	public DishDetailVO getDishDetails(String dishId)

@@ -37,19 +37,26 @@ public class DishDiscoveryRESTServiceImpl implements IDishDiscoveryRESTService {
 
 	@Override
 	@GET
-	@Path("search/byname/{name}")
+	@Path("search/byname/{name}/{pgeSize}/{pageNo}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public GetDishSummaryResponse searchDishesByName(
-			 @PathParam("name") String name) {
+			@PathParam("name") String name, @PathParam("pgeSize") int pageSize,
+			@PathParam("pageNo") int pageNo) {
+		
 		GetDishSummaryRequest dishSummaryRequest = new GetDishSummaryRequest();
+		
 		dishSummaryRequest.setDishName(name);
+		dishSummaryRequest.setPageNo(pageNo);
+		dishSummaryRequest.setPageSize(pageSize);
+		
 		return dishSummaryHandler.execute(dishSummaryRequest);
 	}
-	
+
 	@GET
 	@Path("dish/detail/{dishId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public GetDishDetailsResponse getDishDetail( @PathParam("dishId") String dishId) {
+	public GetDishDetailsResponse getDishDetail(
+			@PathParam("dishId") String dishId) {
 		GetDishDetailsRequest dishDetailsRequest = new GetDishDetailsRequest();
 		dishDetailsRequest.setDishId(dishId);
 		return dishDetailsHandler.execute(dishDetailsRequest);

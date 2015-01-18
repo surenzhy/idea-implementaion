@@ -6,6 +6,6 @@ import com.dishdiscovery.service.rest.response.data.GetDishSummaryResponse;
 
 public interface IDishDiscoveryRESTService {
 	public GetDishCategoryResponse getAllDishCategory();
-	public GetDishSummaryResponse searchDishesByName(String name);
+	public GetDishSummaryResponse searchDishesByName(String name, int pageSize, int pageNo);
 	public GetDishDetailsResponse getDishDetail(String dishId);
 }

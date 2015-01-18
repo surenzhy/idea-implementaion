@@ -25,7 +25,9 @@ public class GetDishSummaryListHandler extends
 	protected GetDishSummaryResponse processRequest(
 			GetDishSummaryRequest request) {
 		String name = request.getDishName();
-		List<DishSummaryVO> dishSummaryVOList = dishService.getDishSummaryListByName(name);
+		int pageSize = request.getPageSize();
+		int pageNum = request.getPageNo();
+		List<DishSummaryVO> dishSummaryVOList = dishService.getDishSummaryListByName(name, pageSize, pageNum);
 		
 		return convertServiceResponseToWebResponse(dishSummaryVOList);
 	}

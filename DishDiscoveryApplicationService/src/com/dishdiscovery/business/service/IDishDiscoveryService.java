@@ -11,7 +11,7 @@ public interface IDishDiscoveryService {
 
 	public List<DishCategoriesVO> getAllDishCategories() throws ServiceException;
 	
-	public List<DishSummaryVO> getDishSummaryListByName(String name) throws ServiceException;
+	public List<DishSummaryVO> getDishSummaryListByName(String name, int pageSize, int pageNo) throws ServiceException;
 	
 	public DishDetailVO getDishDetails(String dishId) throws ServiceException;
 }

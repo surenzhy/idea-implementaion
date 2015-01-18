@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -48,14 +47,19 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<DishSummaryVO> getDishSummaryListByName(String name)
+	public List<DishSummaryVO> getDishSummaryListByName(String name, int pageSize, int pageNo)
 			throws DAOException {
 		List<DshMtda> disMtdaList = null;
 		String dishSummaryHql = "from DshMtda as dish left join fetch dish.dshCatTyp as dshCatTyp "
 				+ "left join fetch dshCatTyp.dshCat left join fetch dshCatTyp.dshTyp "
 				+ "inner join fetch dish.dshDtls as dshDtl inner join fetch dshDtl.resDtl where lower(dish.dshNme) like:name";
+		
 		Query query = sessionFactory.openSession().createQuery(dishSummaryHql);
+		
 		query.setParameter("name", "%"+name.toLowerCase()+"%");
+		query.setFirstResult((pageNo-1)*pageSize);
+		query.setMaxResults(pageSize);
+		
 		disMtdaList = query.list();
 		
 		/*disMtdaList = sessionFactory.openSession()
