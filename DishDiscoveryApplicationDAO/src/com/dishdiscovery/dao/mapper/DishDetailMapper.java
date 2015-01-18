@@ -52,8 +52,9 @@ public class DishDetailMapper {
 			resDetailVO.setResAddr(resDtl.getResAddr());
 			resDetailVO.setMblNbr(resDtl.getMblNbr());
 			resDetailVO.setLndLneNbr(resDtl.getLndLneNbr());
-			
 		}
+		
+		dishDetail.setRestDetailVO(resDetailVO);
 
 
 	}
