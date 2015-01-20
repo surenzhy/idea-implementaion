@@ -1,0 +1,3 @@
+com\dishdiscovery\service\rest\response\data\GetDishDetailResponse.class
+com\dishdiscovery\service\rest\request\data\GetDishDetailRequest.class
+com\dishdiscovery\service\rest\handlers\GetDishDetailHandler.class

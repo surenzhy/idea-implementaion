@@ -18,3 +18,5 @@
 *.war
 *.jar
 *.jar
+*.class
+*.class
