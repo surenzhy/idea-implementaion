@@ -20,3 +20,10 @@
 *.jar
 *.class
 *.class
+DishDiscoveryApplicationCommon/target/maven-archiver/pom.properties
+DishDiscoveryApplicationDAO/target/maven-archiver/pom.properties
+DishDiscoveryApplicationService/target/maven-archiver/pom.properties
+*.MF
+DishDiscoveryApplicationWeb/target/dishdiscovery-web-0.0.1-SNAPSHOT/upload.jsp
+DishDiscoveryApplicationWeb/target/dishdiscovery-web-0.0.1-SNAPSHOT/WEB-INF/web.xml
+DishDiscoveryApplicationWeb/target/maven-archiver/pom.properties
