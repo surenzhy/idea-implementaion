@@ -1,6 +1,8 @@
 package com.dishdiscovery.business.service;
 
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,17 +25,25 @@ public class DishDiscoveryServiceImpl implements IDishDiscoveryService {
 
 	}
 
-	public List<DishSummaryVO> getDishSummaryListByName(String name, int pageSize, int pageNo)
-			throws ServiceException {
-		return dishDiscoveryDAO.getDishSummaryListByName(name, pageSize, pageNo);
+	public List<DishSummaryVO> getDishSummaryListByName(String name,
+			int pageSize, int pageNo) throws ServiceException {
+		return dishDiscoveryDAO
+				.getDishSummaryListByName(name, pageSize, pageNo);
 	}
-	
-	public DishDetailVO getDishDetails(String dishId)
-			throws ServiceException {
+
+	public DishDetailVO getDishDetails(String dishId) throws ServiceException {
 		return dishDiscoveryDAO.getDishDetails(dishId);
 
 	}
 
+	public List<DishSummaryVO> getDishListByCategory(String cuzType,
+			String dishType, String dshName, int pageSize, int pageNo) throws ServiceException {
+		return dishDiscoveryDAO.getDishListByCategory(cuzType, dishType,
+				dshName, pageSize, pageNo);
+	}
 
+	public boolean uploadImage(Properties propFile, InputStream imageContent) {
+		return true;
+	}
 
 }

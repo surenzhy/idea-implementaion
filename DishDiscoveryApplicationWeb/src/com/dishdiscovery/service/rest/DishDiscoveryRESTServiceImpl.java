@@ -10,11 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dishdiscovery.service.rest.handlers.Handler;
+import com.dishdiscovery.service.rest.request.data.CusineType;
+import com.dishdiscovery.service.rest.request.data.DishType;
 import com.dishdiscovery.service.rest.request.data.GetDishDetailRequest;
+import com.dishdiscovery.service.rest.request.data.GetDishListByCategoryRequest;
 import com.dishdiscovery.service.rest.request.data.GetDishSummaryRequest;
 import com.dishdiscovery.service.rest.request.data.GetDishcategoryRequest;
 import com.dishdiscovery.service.rest.response.data.GetDishCategoryResponse;
 import com.dishdiscovery.service.rest.response.data.GetDishDetailResponse;
+import com.dishdiscovery.service.rest.response.data.GetDishListByCategoryResponse;
 import com.dishdiscovery.service.rest.response.data.GetDishSummaryResponse;
 
 @Component
@@ -26,6 +30,8 @@ public class DishDiscoveryRESTServiceImpl implements IDishDiscoveryRESTService {
 	Handler<GetDishSummaryRequest, GetDishSummaryResponse> dishSummaryHandler;
 	@Autowired
 	Handler<GetDishDetailRequest, GetDishDetailResponse> dishDetailHandler;
+	@Autowired
+	Handler<GetDishListByCategoryRequest, GetDishListByCategoryResponse> dishListByCategoryHandler;
 
 	@GET
 	@Path("categories")
@@ -42,13 +48,13 @@ public class DishDiscoveryRESTServiceImpl implements IDishDiscoveryRESTService {
 	public GetDishSummaryResponse searchDishesByName(
 			@PathParam("name") String name, @PathParam("pgeSize") int pageSize,
 			@PathParam("pageNo") int pageNo) {
-		
+
 		GetDishSummaryRequest dishSummaryRequest = new GetDishSummaryRequest();
-		
+
 		dishSummaryRequest.setDishName(name);
 		dishSummaryRequest.setPageNo(pageNo);
 		dishSummaryRequest.setPageSize(pageSize);
-		
+
 		return dishSummaryHandler.execute(dishSummaryRequest);
 	}
 
@@ -61,5 +67,26 @@ public class DishDiscoveryRESTServiceImpl implements IDishDiscoveryRESTService {
 		dishDetailsRequest.setDishId(dishId);
 		return dishDetailHandler.execute(dishDetailsRequest);
 
+	}
+
+	@Override
+	@GET
+	@Path("categories/{cusineType}/{dishType}/{dishName}/{pgeSize}/{pageNo}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public GetDishListByCategoryResponse getDishListByCategory(
+			@PathParam("cusineType") CusineType cusineType,
+			@PathParam("dishType") DishType dishType,
+			@PathParam("dishName") String dishName,
+			@PathParam("pgeSize") int pageSize, @PathParam("pageNo") int pageNo) {
+
+		GetDishListByCategoryRequest dishListByCategoryRequest = new GetDishListByCategoryRequest();
+
+		dishListByCategoryRequest.setCusineType(cusineType);
+		dishListByCategoryRequest.setDishType(dishType);
+		dishListByCategoryRequest.setDishName(dishName);
+		dishListByCategoryRequest.setPageNo(pageNo);
+		dishListByCategoryRequest.setPageSize(pageSize);
+
+		return dishListByCategoryHandler.execute(dishListByCategoryRequest);
 	}
 }

@@ -47,25 +47,26 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<DishSummaryVO> getDishSummaryListByName(String name, int pageSize, int pageNo)
-			throws DAOException {
+	public List<DishSummaryVO> getDishSummaryListByName(String name,
+			int pageSize, int pageNo) throws DAOException {
 		List<DshMtda> disMtdaList = null;
 		String dishSummaryHql = "from DshMtda as dish left join fetch dish.dshCatTyp as dshCatTyp "
 				+ "left join fetch dshCatTyp.dshCat left join fetch dshCatTyp.dshTyp "
 				+ "inner join fetch dish.dshDtls as dshDtl inner join fetch dshDtl.resDtl where lower(dish.dshNme) like:name";
-		
+
 		Query query = sessionFactory.openSession().createQuery(dishSummaryHql);
-		
-		query.setParameter("name", "%"+name.toLowerCase()+"%");
-		query.setFirstResult((pageNo-1)*pageSize);
+
+		query.setParameter("name", "%" + name.toLowerCase() + "%");
+		query.setFirstResult((pageNo - 1) * pageSize);
 		query.setMaxResults(pageSize);
-		
+
 		disMtdaList = query.list();
-		
-		/*disMtdaList = sessionFactory.openSession()
-				.createCriteria(DshMtda.class)
-				.add(Restrictions.ilike("dshNme", name, MatchMode.ANYWHERE))
-				.list();*/
+
+		/*
+		 * disMtdaList = sessionFactory.openSession()
+		 * .createCriteria(DshMtda.class) .add(Restrictions.ilike("dshNme",
+		 * name, MatchMode.ANYWHERE)) .list();
+		 */
 
 		return DishSummaryMapper.convertDBObjectToBusinessObject(disMtdaList);
 	}
@@ -73,9 +74,49 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 	public DishDetailVO getDishDetails(String dishId) throws DAOException {
 
 		DshDtl dishDetailBO = (DshDtl) sessionFactory.openSession()
-				.createCriteria(DshDtl.class).add(Restrictions.idEq(Long.valueOf(dishId))).uniqueResult();
+				.createCriteria(DshDtl.class)
+				.add(Restrictions.idEq(Long.valueOf(dishId))).uniqueResult();
 
 		return DishDetailMapper.convertDBObjectToBusinessObject(dishDetailBO);
+	}
+
+	public List<DishSummaryVO> getDishListByCategory(String cuzType,
+			String dshType, String dishName, int pageSize, int pageNo)
+			throws DAOException {
+
+		List<DshMtda> disMtdaList = null;
+
+		if (dshType == null) {
+			String dishSummaryHql = "from DshMtda as dish left join fetch dish.dshCatTyp as dshCatTyp "
+					+ "left join fetch dshCatTyp.dshCat left join fetch dshCatTyp.dshTyp "
+					+ "where dshCatTyp.dshCat=:cuzType groupby dshCatTyp.dshTyp";
+			Query query = sessionFactory.openSession().createQuery(
+					dishSummaryHql);
+			query.setParameter("cuzType", cuzType);
+			disMtdaList = query.list();
+
+		} else if (cuzType == null) {
+			String dishSummaryHql = "from DshMtda as dish left join fetch dish.dshCatTyp as dshCatTyp "
+					+ "left join fetch dshCatTyp.dshCat left join fetch dshCatTyp.dshTyp "
+					+ "where dshCatTyp.dshTyp=:dshType groupby dshCatTyp.dshCat";
+			Query query = sessionFactory.openSession().createQuery(
+					dishSummaryHql);
+			query.setParameter("dshType", dshType);
+			disMtdaList = query.list();
+
+		} else {
+			String concatCAT_TYP = cuzType + dshType;
+			String dishSummaryHql = "from DshMtda as dish left join fetch dish.dshCatTyp as dshCatTyp "
+					+ "where dshCatTyp=:concatCAT_TYP";
+			Query query = sessionFactory.openSession().createQuery(
+					dishSummaryHql);
+			query.setParameter("dshType", concatCAT_TYP);
+			disMtdaList = query.list();
+
+		}
+
+		return null;
+
 	}
 
 }
