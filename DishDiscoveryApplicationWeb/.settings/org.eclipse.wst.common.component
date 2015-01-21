@@ -14,6 +14,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/DishDiscoveryApplicationWeb/build/classes"/>
-        <property name="context-root" value="dishdiscovery"/>
+        <property name="context-root" value="dishdiscovery-web"/>
     </wb-module>
 </project-modules>
