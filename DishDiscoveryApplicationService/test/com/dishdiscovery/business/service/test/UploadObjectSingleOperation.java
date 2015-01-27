@@ -1,17 +1,7 @@
 package com.dishdiscovery.business.service.test;
-import java.io.File;
-import java.io.IOException;
-
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.AmazonServiceException;
-import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
-import com.amazonaws.auth.SystemPropertiesCredentialsProvider;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.PutObjectRequest;
 
 public class UploadObjectSingleOperation {
-	private static String bucketName = "dishdbimages";
+	/*private static String bucketName = "dishdbimages";
 	private static String keyName = "B 304.pdf";
 	private static String uploadFileName = "C:\\Users\\Admin\\Downloads\\B 304.pdf";
 
@@ -43,5 +33,5 @@ public class UploadObjectSingleOperation {
 					+ "such as not being able to access the network.");
 			System.out.println("Error Message: " + ace.getMessage());
 		}
-	}
+	}*/
 }

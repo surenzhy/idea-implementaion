@@ -3,3 +3,15 @@
 *.class
 *.class
 *.class
+*.jar
+DishDiscoveryApplicationDAO/target/maven-archiver/pom.properties
+DishDiscoveryApplicationDAO/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+DishDiscoveryApplicationDAO/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+DishDiscoveryApplicationService/target/maven-archiver/pom.properties
+*.lst
+*.class
+*.class
+*.class
+*.MF
+DishDiscoveryApplicationWeb/target/dishdiscovery-web-0.0.1-SNAPSHOT/WEB-INF/classes/com/dishdiscovery/service/rest/util/ErrorCodes.java.xml
+*.war

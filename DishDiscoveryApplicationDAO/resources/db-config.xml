@@ -18,13 +18,13 @@
 		</property>
 	</bean>
 
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url"
-			value="jdbc:oracle:thin:@dshdb.cvbkmp40wqxm.ap-southeast-1.rds.amazonaws.com:1521/DSHDB" />
-		<property name="username" value="DSH_DSC_OWNER" />
-		<property name="password" value="Q1W2E3R4" />
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> <property 
+		name="url" value="jdbc:mysql://127.8.153.2:3306/DSHDB" /> <property name="username" 
+		value="admin7cIFsH4" /> <property name="password" value="MvcbpqHiEkUB" /> 
+		</bean> -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/MySQLDS" />
 	</bean>
 
 	<bean id="txManager"

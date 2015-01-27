@@ -1,19 +1,8 @@
 package com.dishdiscovery.business.service.util;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.AmazonServiceException;
-import com.amazonaws.auth.SystemPropertiesCredentialsProvider;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.util.IOUtils;
 
 public class UploadObjectSingleOperation {
-	private static String bucketName = "dishdbimages";
+	/*private static String bucketName = "dishdbimages";
 
 	public static boolean uploadFile(InputStream imageContent, String fileName)
 			throws IOException {
@@ -21,7 +10,7 @@ public class UploadObjectSingleOperation {
 		AmazonS3 s3client = new AmazonS3Client(
 				new SystemPropertiesCredentialsProvider());
 		try {
-			System.out.println("Uploading a new object to S3 from a file\n");
+			System.out.prinhttp://marketplace.eclipse.org/marketplace-client-intro?mpc_install=121986tln("Uploading a new object to S3 from a file\n");
 			byte[] contentBytes = IOUtils.toByteArray(imageContent);
 			Long contentLength = Long.valueOf(contentBytes.length);
 
@@ -50,5 +39,5 @@ public class UploadObjectSingleOperation {
 			System.out.println("Error Message: " + ace.getMessage());
 		}
 		return false;
-	}
+	}*/
 }
