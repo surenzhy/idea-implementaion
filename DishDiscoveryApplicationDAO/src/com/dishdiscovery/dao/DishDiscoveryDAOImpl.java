@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dishdiscovery.dao.data.DishCategoriesVO;
 import com.dishdiscovery.dao.data.DishDetailVO;
+import com.dishdiscovery.dao.data.DishResultListByCategoryVO;
 import com.dishdiscovery.dao.data.DishSummaryVO;
 import com.dishdiscovery.dao.entity.DshCat;
 import com.dishdiscovery.dao.entity.DshDtl;
@@ -80,7 +81,7 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 		return DishDetailMapper.convertDBObjectToBusinessObject(dishDetailBO);
 	}
 
-	public List<DishSummaryVO> getDishListByCategory(String cuzType,
+	public DishResultListByCategoryVO getDishListByCategory(String cuzType,
 			String dshType, String dishName, int pageSize, int pageNo)
 			throws DAOException {
 

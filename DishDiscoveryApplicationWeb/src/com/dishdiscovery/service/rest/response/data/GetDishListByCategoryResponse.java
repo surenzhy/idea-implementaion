@@ -1,19 +1,17 @@
 package com.dishdiscovery.service.rest.response.data;
 
-import java.util.List;
-
-import com.dishdiscovery.dao.data.DishSummaryVO;
+import com.dishdiscovery.dao.data.DishResultListByCategoryVO;
 import com.dishdiscovery.service.rest.request.GenericResponse;
 
 public class GetDishListByCategoryResponse extends GenericResponse{
-	private List<DishSummaryVO> dishSummaryList;
+	private DishResultListByCategoryVO dshRsltListByCat;
 
-	public List<DishSummaryVO> getDishSummaryList() {
-		return dishSummaryList;
+	public DishResultListByCategoryVO getDshRsltListByCat() {
+		return dshRsltListByCat;
 	}
 
-	public void setDishSummaryList(List<DishSummaryVO> dishSummaryList) {
-		this.dishSummaryList = dishSummaryList;
+	public void setDshRsltListByCat(DishResultListByCategoryVO dshRsltListByCat) {
+		this.dshRsltListByCat = dshRsltListByCat;
 	}
 	
 }
