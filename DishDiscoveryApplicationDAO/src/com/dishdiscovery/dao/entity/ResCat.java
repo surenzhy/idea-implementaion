@@ -16,12 +16,9 @@ public class ResCat implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="RES_CAT_ID")
-	private long resCatId;
+	private String res_Cat_ID;
 
-	@Column(name="RES_CAT_NME")
-	private String resCatNme;
+	private String res_Cat_Nme;
 
 	//bi-directional many-to-one association to ResDtl
 	@OneToMany(mappedBy="resCat")
@@ -30,20 +27,20 @@ public class ResCat implements Serializable {
 	public ResCat() {
 	}
 
-	public long getResCatId() {
-		return this.resCatId;
+	public String getRes_Cat_ID() {
+		return this.res_Cat_ID;
 	}
 
-	public void setResCatId(long resCatId) {
-		this.resCatId = resCatId;
+	public void setRes_Cat_ID(String res_Cat_ID) {
+		this.res_Cat_ID = res_Cat_ID;
 	}
 
-	public String getResCatNme() {
-		return this.resCatNme;
+	public String getRes_Cat_Nme() {
+		return this.res_Cat_Nme;
 	}
 
-	public void setResCatNme(String resCatNme) {
-		this.resCatNme = resCatNme;
+	public void setRes_Cat_Nme(String res_Cat_Nme) {
+		this.res_Cat_Nme = res_Cat_Nme;
 	}
 
 	public List<ResDtl> getResDtls() {

@@ -16,12 +16,9 @@ public class DshCat implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="DSH_CAT_ID")
-	private long dshCatId;
+	private long dsh_Cat_ID;
 
-	@Column(name="DSH_CAT_NME")
-	private String dshCatNme;
+	private String dsh_Cat_Nme;
 
 	//bi-directional many-to-one association to DshCatTyp
 	@OneToMany(mappedBy="dshCat")
@@ -30,20 +27,20 @@ public class DshCat implements Serializable {
 	public DshCat() {
 	}
 
-	public long getDshCatId() {
-		return this.dshCatId;
+	public long getDsh_Cat_ID() {
+		return this.dsh_Cat_ID;
 	}
 
-	public void setDshCatId(long dshCatId) {
-		this.dshCatId = dshCatId;
+	public void setDsh_Cat_ID(long dsh_Cat_ID) {
+		this.dsh_Cat_ID = dsh_Cat_ID;
 	}
 
-	public String getDshCatNme() {
-		return this.dshCatNme;
+	public String getDsh_Cat_Nme() {
+		return this.dsh_Cat_Nme;
 	}
 
-	public void setDshCatNme(String dshCatNme) {
-		this.dshCatNme = dshCatNme;
+	public void setDsh_Cat_Nme(String dsh_Cat_Nme) {
+		this.dsh_Cat_Nme = dsh_Cat_Nme;
 	}
 
 	public List<DshCatTyp> getDshCatTyps() {

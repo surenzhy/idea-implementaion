@@ -2,33 +2,31 @@ package com.dishdiscovery.dao.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 
 /**
- * The persistent class for the USR_DH_LIK database table.
+ * The persistent class for the USR_DSH_LIK database table.
  * 
  */
 @Entity
-@Table(name="USR_DH_LIK")
-@NamedQuery(name="UsrDhLik.findAll", query="SELECT u FROM UsrDhLik u")
-public class UsrDhLik implements Serializable {
+@Table(name="USR_DSH_LIK")
+@NamedQuery(name="UsrDshLik.findAll", query="SELECT u FROM UsrDshLik u")
+public class UsrDshLik implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="USR_DSH_LIK_ID")
-	private long usrDshLikId;
+	private int usrDshLikId;
 
 	@Column(name="USR_DSH_LIK")
-	private BigDecimal usrDshLik;
+	private int usrDshLik;
 
 	@Column(name="USR_DSH_UNLIK")
-	private BigDecimal usrDshUnlik;
+	private int usrDshUnlik;
 
 	//bi-directional many-to-one association to DshDtl
 	@ManyToOne
-	@JoinColumn(name="DSH_DTL_ID")
+	@JoinColumn(name="Dsh_Dtl_ID")
 	private DshDtl dshDtl;
 
 	//bi-directional many-to-one association to UsrMtda
@@ -36,30 +34,30 @@ public class UsrDhLik implements Serializable {
 	@JoinColumn(name="USR_ID")
 	private UsrMtda usrMtda;
 
-	public UsrDhLik() {
+	public UsrDshLik() {
 	}
 
-	public long getUsrDshLikId() {
+	public int getUsrDshLikId() {
 		return this.usrDshLikId;
 	}
 
-	public void setUsrDshLikId(long usrDshLikId) {
+	public void setUsrDshLikId(int usrDshLikId) {
 		this.usrDshLikId = usrDshLikId;
 	}
 
-	public BigDecimal getUsrDshLik() {
+	public int getUsrDshLik() {
 		return this.usrDshLik;
 	}
 
-	public void setUsrDshLik(BigDecimal usrDshLik) {
+	public void setUsrDshLik(int usrDshLik) {
 		this.usrDshLik = usrDshLik;
 	}
 
-	public BigDecimal getUsrDshUnlik() {
+	public int getUsrDshUnlik() {
 		return this.usrDshUnlik;
 	}
 
-	public void setUsrDshUnlik(BigDecimal usrDshUnlik) {
+	public void setUsrDshUnlik(int usrDshUnlik) {
 		this.usrDshUnlik = usrDshUnlik;
 	}
 

@@ -16,21 +16,9 @@ public class ResDtl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="RES_DTL_ID")
-	private long resDtlId;
+	private int res_dtl_id;
 
-	@Column(name="LND_LNE_NBR")
-	private String lndLneNbr;
-
-	@Column(name="MBL_NBR")
-	private String mblNbr;
-
-	@Column(name="RES_ADDR")
-	private String resAddr;
-
-	@Column(name="RES_NME")
-	private String resNme;
+	private String res_nme;
 
 	//bi-directional many-to-one association to DshDtl
 	@OneToMany(mappedBy="resDtl")
@@ -38,50 +26,30 @@ public class ResDtl implements Serializable {
 
 	//bi-directional many-to-one association to ResCat
 	@ManyToOne
-	@JoinColumn(name="RES_CAT_ID")
+	@JoinColumn(name="Res_Cat_ID")
 	private ResCat resCat;
+
+	//bi-directional many-to-one association to ResDtlMtda
+	@OneToMany(mappedBy="resDtl")
+	private List<ResDtlMtda> resDtlMtdas;
 
 	public ResDtl() {
 	}
 
-	public long getResDtlId() {
-		return this.resDtlId;
+	public int getRes_dtl_id() {
+		return this.res_dtl_id;
 	}
 
-	public void setResDtlId(long resDtlId) {
-		this.resDtlId = resDtlId;
+	public void setRes_dtl_id(int res_dtl_id) {
+		this.res_dtl_id = res_dtl_id;
 	}
 
-	public String getLndLneNbr() {
-		return this.lndLneNbr;
+	public String getRes_nme() {
+		return this.res_nme;
 	}
 
-	public void setLndLneNbr(String lndLneNbr) {
-		this.lndLneNbr = lndLneNbr;
-	}
-
-	public String getMblNbr() {
-		return this.mblNbr;
-	}
-
-	public void setMblNbr(String mblNbr) {
-		this.mblNbr = mblNbr;
-	}
-
-	public String getResAddr() {
-		return this.resAddr;
-	}
-
-	public void setResAddr(String resAddr) {
-		this.resAddr = resAddr;
-	}
-
-	public String getResNme() {
-		return this.resNme;
-	}
-
-	public void setResNme(String resNme) {
-		this.resNme = resNme;
+	public void setRes_nme(String res_nme) {
+		this.res_nme = res_nme;
 	}
 
 	public List<DshDtl> getDshDtls() {
@@ -112,6 +80,28 @@ public class ResDtl implements Serializable {
 
 	public void setResCat(ResCat resCat) {
 		this.resCat = resCat;
+	}
+
+	public List<ResDtlMtda> getResDtlMtdas() {
+		return this.resDtlMtdas;
+	}
+
+	public void setResDtlMtdas(List<ResDtlMtda> resDtlMtdas) {
+		this.resDtlMtdas = resDtlMtdas;
+	}
+
+	public ResDtlMtda addResDtlMtda(ResDtlMtda resDtlMtda) {
+		getResDtlMtdas().add(resDtlMtda);
+		resDtlMtda.setResDtl(this);
+
+		return resDtlMtda;
+	}
+
+	public ResDtlMtda removeResDtlMtda(ResDtlMtda resDtlMtda) {
+		getResDtlMtdas().remove(resDtlMtda);
+		resDtlMtda.setResDtl(null);
+
+		return resDtlMtda;
 	}
 
 }

@@ -16,35 +16,34 @@ public class DshSyn implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="DSH_SYN_ID")
-	private long dshSynId;
+	private int dshSynId;
 
-	@Column(name="DSH_SYN_MTDA_ID")
-	private BigDecimal dshSynMtdaId;
+	@Column(name="DSH_MTDA_ID")
+	private BigDecimal dshMtdaId;
 
 	//bi-directional many-to-one association to DshMtda
 	@ManyToOne
-	@JoinColumn(name="DSH_MTDA_ID")
+	@JoinColumn(name="DSH_SYN_MTDA_ID2")
 	private DshMtda dshMtda;
 
 	public DshSyn() {
 	}
 
-	public long getDshSynId() {
+	public int getDshSynId() {
 		return this.dshSynId;
 	}
 
-	public void setDshSynId(long dshSynId) {
+	public void setDshSynId(int dshSynId) {
 		this.dshSynId = dshSynId;
 	}
 
-	public BigDecimal getDshSynMtdaId() {
-		return this.dshSynMtdaId;
+	public BigDecimal getDshMtdaId() {
+		return this.dshMtdaId;
 	}
 
-	public void setDshSynMtdaId(BigDecimal dshSynMtdaId) {
-		this.dshSynMtdaId = dshSynMtdaId;
+	public void setDshMtdaId(BigDecimal dshMtdaId) {
+		this.dshMtdaId = dshMtdaId;
 	}
 
 	public DshMtda getDshMtda() {

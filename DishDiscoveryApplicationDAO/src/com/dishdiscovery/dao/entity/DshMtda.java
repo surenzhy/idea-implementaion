@@ -2,6 +2,7 @@ package com.dishdiscovery.dao.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -16,15 +17,19 @@ public class DshMtda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="DSH_MTDA_ID")
-	private long dshMtdaId;
+	private double dshMtdaId;
 
 	@Column(name="DFT_ING")
 	private String dftIng;
 
+	private BigDecimal dsh_Cat_Typ_ID;
+
 	@Column(name="DSH_CNT_CDE")
 	private String dshCntCde;
+
+	@Column(name="DSH_DFT_IMG")
+	private String dshDftImg;
 
 	@Column(name="DSH_NME")
 	private String dshNme;
@@ -35,7 +40,7 @@ public class DshMtda implements Serializable {
 
 	//bi-directional many-to-one association to DshCatTyp
 	@ManyToOne
-	@JoinColumn(name="DSH_CAT_TYP_ID")
+	@JoinColumn(name="Dsh_Cat_Typ_ID1")
 	private DshCatTyp dshCatTyp;
 
 	//bi-directional many-to-one association to DshSyn
@@ -45,11 +50,11 @@ public class DshMtda implements Serializable {
 	public DshMtda() {
 	}
 
-	public long getDshMtdaId() {
+	public double getDshMtdaId() {
 		return this.dshMtdaId;
 	}
 
-	public void setDshMtdaId(long dshMtdaId) {
+	public void setDshMtdaId(double dshMtdaId) {
 		this.dshMtdaId = dshMtdaId;
 	}
 
@@ -61,12 +66,28 @@ public class DshMtda implements Serializable {
 		this.dftIng = dftIng;
 	}
 
+	public BigDecimal getDsh_Cat_Typ_ID() {
+		return this.dsh_Cat_Typ_ID;
+	}
+
+	public void setDsh_Cat_Typ_ID(BigDecimal dsh_Cat_Typ_ID) {
+		this.dsh_Cat_Typ_ID = dsh_Cat_Typ_ID;
+	}
+
 	public String getDshCntCde() {
 		return this.dshCntCde;
 	}
 
 	public void setDshCntCde(String dshCntCde) {
 		this.dshCntCde = dshCntCde;
+	}
+
+	public String getDshDftImg() {
+		return this.dshDftImg;
+	}
+
+	public void setDshDftImg(String dshDftImg) {
+		this.dshDftImg = dshDftImg;
 	}
 
 	public String getDshNme() {

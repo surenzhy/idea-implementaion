@@ -2,7 +2,7 @@ package com.dishdiscovery.dao.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 
@@ -17,15 +17,16 @@ public class UsrMtda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="USR_ID")
-	private long usrId;
+	private int usrId;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CRE_TMP")
-	private Timestamp creTmp;
+	private Date creTmp;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="LST_UPD_TMP")
-	private Timestamp lstUpdTmp;
+	private Date lstUpdTmp;
 
 	@Column(name="USR_LGN_ADDR")
 	private String usrLgnAddr;
@@ -42,9 +43,17 @@ public class UsrMtda implements Serializable {
 	@Column(name="USR_SUR_NME")
 	private String usrSurNme;
 
-	//bi-directional many-to-one association to UsrDhLik
+	//bi-directional many-to-one association to ImgFilMtda
 	@OneToMany(mappedBy="usrMtda")
-	private List<UsrDhLik> usrDhLiks;
+	private List<ImgFilMtda> imgFilMtdas;
+
+	//bi-directional many-to-one association to UsrDshCmt
+	@OneToMany(mappedBy="usrMtda")
+	private List<UsrDshCmt> usrDshCmts;
+
+	//bi-directional many-to-one association to UsrDshLik
+	@OneToMany(mappedBy="usrMtda")
+	private List<UsrDshLik> usrDshLiks;
 
 	//bi-directional many-to-one association to UsrDshRvw
 	@OneToMany(mappedBy="usrMtda")
@@ -58,27 +67,27 @@ public class UsrMtda implements Serializable {
 	public UsrMtda() {
 	}
 
-	public long getUsrId() {
+	public int getUsrId() {
 		return this.usrId;
 	}
 
-	public void setUsrId(long usrId) {
+	public void setUsrId(int usrId) {
 		this.usrId = usrId;
 	}
 
-	public Timestamp getCreTmp() {
+	public Date getCreTmp() {
 		return this.creTmp;
 	}
 
-	public void setCreTmp(Timestamp creTmp) {
+	public void setCreTmp(Date creTmp) {
 		this.creTmp = creTmp;
 	}
 
-	public Timestamp getLstUpdTmp() {
+	public Date getLstUpdTmp() {
 		return this.lstUpdTmp;
 	}
 
-	public void setLstUpdTmp(Timestamp lstUpdTmp) {
+	public void setLstUpdTmp(Date lstUpdTmp) {
 		this.lstUpdTmp = lstUpdTmp;
 	}
 
@@ -122,26 +131,70 @@ public class UsrMtda implements Serializable {
 		this.usrSurNme = usrSurNme;
 	}
 
-	public List<UsrDhLik> getUsrDhLiks() {
-		return this.usrDhLiks;
+	public List<ImgFilMtda> getImgFilMtdas() {
+		return this.imgFilMtdas;
 	}
 
-	public void setUsrDhLiks(List<UsrDhLik> usrDhLiks) {
-		this.usrDhLiks = usrDhLiks;
+	public void setImgFilMtdas(List<ImgFilMtda> imgFilMtdas) {
+		this.imgFilMtdas = imgFilMtdas;
 	}
 
-	public UsrDhLik addUsrDhLik(UsrDhLik usrDhLik) {
-		getUsrDhLiks().add(usrDhLik);
-		usrDhLik.setUsrMtda(this);
+	public ImgFilMtda addImgFilMtda(ImgFilMtda imgFilMtda) {
+		getImgFilMtdas().add(imgFilMtda);
+		imgFilMtda.setUsrMtda(this);
 
-		return usrDhLik;
+		return imgFilMtda;
 	}
 
-	public UsrDhLik removeUsrDhLik(UsrDhLik usrDhLik) {
-		getUsrDhLiks().remove(usrDhLik);
-		usrDhLik.setUsrMtda(null);
+	public ImgFilMtda removeImgFilMtda(ImgFilMtda imgFilMtda) {
+		getImgFilMtdas().remove(imgFilMtda);
+		imgFilMtda.setUsrMtda(null);
 
-		return usrDhLik;
+		return imgFilMtda;
+	}
+
+	public List<UsrDshCmt> getUsrDshCmts() {
+		return this.usrDshCmts;
+	}
+
+	public void setUsrDshCmts(List<UsrDshCmt> usrDshCmts) {
+		this.usrDshCmts = usrDshCmts;
+	}
+
+	public UsrDshCmt addUsrDshCmt(UsrDshCmt usrDshCmt) {
+		getUsrDshCmts().add(usrDshCmt);
+		usrDshCmt.setUsrMtda(this);
+
+		return usrDshCmt;
+	}
+
+	public UsrDshCmt removeUsrDshCmt(UsrDshCmt usrDshCmt) {
+		getUsrDshCmts().remove(usrDshCmt);
+		usrDshCmt.setUsrMtda(null);
+
+		return usrDshCmt;
+	}
+
+	public List<UsrDshLik> getUsrDshLiks() {
+		return this.usrDshLiks;
+	}
+
+	public void setUsrDshLiks(List<UsrDshLik> usrDshLiks) {
+		this.usrDshLiks = usrDshLiks;
+	}
+
+	public UsrDshLik addUsrDshLik(UsrDshLik usrDshLik) {
+		getUsrDshLiks().add(usrDshLik);
+		usrDshLik.setUsrMtda(this);
+
+		return usrDshLik;
+	}
+
+	public UsrDshLik removeUsrDshLik(UsrDshLik usrDshLik) {
+		getUsrDshLiks().remove(usrDshLik);
+		usrDshLik.setUsrMtda(null);
+
+		return usrDshLik;
 	}
 
 	public List<UsrDshRvw> getUsrDshRvws() {

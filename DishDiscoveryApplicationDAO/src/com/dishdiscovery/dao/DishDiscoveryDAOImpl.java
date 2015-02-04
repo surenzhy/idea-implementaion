@@ -40,8 +40,8 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 				.hasNext();) {
 			DshCat dshCat = iterator.next();
 			DishCategoriesVO dishCategoryVO = new DishCategoriesVO();
-			dishCategoryVO.setDshCatId(dshCat.getDshCatId());
-			dishCategoryVO.setDshCatNme(dshCat.getDshCatNme());
+			dishCategoryVO.setDshCatId(dshCat.getDsh_Cat_ID());
+			dishCategoryVO.setDshCatNme(dshCat.getDsh_Cat_Nme());
 			allDishCategories.add(dishCategoryVO);
 		}
 		return allDishCategories;

@@ -15,3 +15,6 @@ DishDiscoveryApplicationService/target/maven-archiver/pom.properties
 *.MF
 DishDiscoveryApplicationWeb/target/dishdiscovery-web-0.0.1-SNAPSHOT/WEB-INF/classes/com/dishdiscovery/service/rest/util/ErrorCodes.java.xml
 *.war
+*.MF
+*.class
+*.class

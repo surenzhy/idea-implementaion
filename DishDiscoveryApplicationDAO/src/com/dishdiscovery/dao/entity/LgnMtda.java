@@ -16,9 +16,8 @@ public class LgnMtda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="LGN_MTDA_ID")
-	private long lgnMtdaId;
+	private int lgnMtdaId;
 
 	@Column(name="LGN_MTDA_DTL")
 	private String lgnMtdaDtl;
@@ -30,11 +29,11 @@ public class LgnMtda implements Serializable {
 	public LgnMtda() {
 	}
 
-	public long getLgnMtdaId() {
+	public int getLgnMtdaId() {
 		return this.lgnMtdaId;
 	}
 
-	public void setLgnMtdaId(long lgnMtdaId) {
+	public void setLgnMtdaId(int lgnMtdaId) {
 		this.lgnMtdaId = lgnMtdaId;
 	}
 

@@ -15,7 +15,7 @@ import com.dishdiscovery.dao.entity.DshCatTyp;
 import com.dishdiscovery.dao.entity.DshDtl;
 import com.dishdiscovery.dao.entity.DshTyp;
 import com.dishdiscovery.dao.entity.ResDtl;
-import com.dishdiscovery.dao.entity.UsrDhLik;
+import com.dishdiscovery.dao.entity.UsrDshLik;
 import com.dishdiscovery.dao.entity.UsrDshRvw;
 
 public class DishDetailMapper {
@@ -37,21 +37,21 @@ public class DishDetailMapper {
 	private static void converBasicDishDetails(DishDetailVO dishDetail,
 			DshDtl dishDetailBO) {
 
-		dishDetail.setDshPrc(dishDetailBO.getDshPrc());
+		dishDetail.setDshPrc(dishDetailBO.getDsh_PRc());
 		dishDetail.setDishName(dishDetailBO.getDshMtda().getDshNme());
-		dishDetail.setDishId(dishDetailBO.getDshDtlId());
+		dishDetail.setDishId(dishDetailBO.getDsh_Dtl_ID());
 		dishDetail.setDshAvlStsCde(dishDetailBO.getDshAvlStsCde());
-		dishDetail.setDshDtlId(dishDetailBO.getDshDtlId());
+		dishDetail.setDshDtlId(dishDetailBO.getDsh_Dtl_ID());
 		dishDetail.setIngredient(dishDetailBO.getDshMtda().getDftIng());
 		
 		ResDtl resDtl = dishDetailBO.getResDtl();
 		RestDetailVO resDetailVO = new RestDetailVO();
 		if(resDtl!=null){
-			resDetailVO.setResDtlId(resDtl.getResDtlId());
-			resDetailVO.setResNme(resDtl.getResNme());
-			resDetailVO.setResAddr(resDtl.getResAddr());
-			resDetailVO.setMblNbr(resDtl.getMblNbr());
-			resDetailVO.setLndLneNbr(resDtl.getLndLneNbr());
+			resDetailVO.setResDtlId(resDtl.getRes_dtl_id());
+			resDetailVO.setResNme(resDtl.getRes_nme());
+			resDetailVO.setResAddr(resDtl.getResDtlMtdas().get(0).getResAddr());
+			resDetailVO.setMblNbr(resDtl.getResDtlMtdas().get(0).getMblNbr());
+			resDetailVO.setLndLneNbr(resDtl.getResDtlMtdas().get(0).getLndLneNbr());
 		}
 		
 		dishDetail.setRestDetailVO(resDetailVO);
@@ -67,7 +67,7 @@ public class DishDetailMapper {
 		for (UsrDshRvw userReview : userDshBO) {
 			UserRivewVO userReviewObj = new UserRivewVO();
 			userReviewObj.setCreTmp(userReview.getCreTmp());
-			userReviewObj.setUsrCmt(userReview.getUsrDshCmt());
+			//userReviewObj.setUsrCmt(userReview.getUsrDshCmt());//TODO
 			userReviewObj.setUsrRvwId(userReview.getUsrDshRvwId());
 
 			// Populating User Details meta data.
@@ -89,15 +89,15 @@ public class DishDetailMapper {
 			DshDtl dishDetailBO){
 		
 		List<UserLikeVO> userLikeList = new ArrayList<UserLikeVO>();
-		List<UsrDhLik> userDshLikBO = dishDetailBO.getUsrDhLiks();
+		List<UsrDshLik> userDshLikBO = dishDetailBO.getUsrDshLiks();
 
-		for (UsrDhLik userDishLike : userDshLikBO) {
+		for (UsrDshLik userDishLike : userDshLikBO) {
 
 			UserLikeVO userLikeObj = new UserLikeVO();
-			userLikeObj.setUsrDshLik(Long.parseLong(userDishLike.getUsrDshLik()
+			/*userLikeObj.setUsrDshLik(Long.parseLong(userDishLike.getUsrDshLik()
 					.toString()));
 			userLikeObj.setUsrDshUnlik(Long.parseLong(userDishLike
-					.getUsrDshUnlik().toString()));
+					.getUsrDshUnlik().toString()));*///TODO
 			userLikeObj.setUsrLikId(userDishLike.getUsrDshLikId());
 
 			// Populating User Details meta data.
@@ -128,8 +128,8 @@ public class DishDetailMapper {
 				DishCatVO dshCatVO = new DishCatVO();
 
 				if (dshCat != null) {
-					dshCatVO.setDshCatId(dshCat.getDshCatId());
-					dshCatVO.setDshCatNme(dshCat.getDshCatNme());
+					dshCatVO.setDshCatId(dshCat.getDsh_Cat_ID());
+					dshCatVO.setDshCatNme(dshCat.getDsh_Cat_Nme());
 				}
 				dishDetail.setDshCatVO(dshCatVO);
 
@@ -137,7 +137,7 @@ public class DishDetailMapper {
 				DishTypeVO dshTypVO = new DishTypeVO();
 				if (dshTyp != null) {
 					dshTypVO.setDshTypId(dshTyp.getDshTypId());
-					dshTypVO.setDshTypNme(dshTyp.getDshTypNme());
+					dshTypVO.setDshTypNme(dshTyp.getDsh_Typ_Nme());
 				}
 				dishDetail.setDshTypVO(dshTypVO);
 

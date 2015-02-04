@@ -17,15 +17,12 @@ public class DshDtl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="DSH_DTL_ID")
-	private long dshDtlId;
+	private int dsh_Dtl_ID;
 
 	@Column(name="DSH_AVL_STS_CDE")
 	private String dshAvlStsCde;
 
-	@Column(name="DSH_PRC")
-	private BigDecimal dshPrc;
+	private BigDecimal dsh_PRc;
 
 	//bi-directional many-to-one association to DshMtda
 	@ManyToOne
@@ -34,12 +31,16 @@ public class DshDtl implements Serializable {
 
 	//bi-directional many-to-one association to ResDtl
 	@ManyToOne
-	@JoinColumn(name="RES_DTL_ID")
+	@JoinColumn(name="Res_dtl_ID")
 	private ResDtl resDtl;
 
-	//bi-directional many-to-one association to UsrDhLik
+	//bi-directional many-to-one association to UsrDshCmt
 	@OneToMany(mappedBy="dshDtl")
-	private List<UsrDhLik> usrDhLiks;
+	private List<UsrDshCmt> usrDshCmts;
+
+	//bi-directional many-to-one association to UsrDshLik
+	@OneToMany(mappedBy="dshDtl")
+	private List<UsrDshLik> usrDshLiks;
 
 	//bi-directional many-to-one association to UsrDshRvw
 	@OneToMany(mappedBy="dshDtl")
@@ -48,12 +49,12 @@ public class DshDtl implements Serializable {
 	public DshDtl() {
 	}
 
-	public long getDshDtlId() {
-		return this.dshDtlId;
+	public int getDsh_Dtl_ID() {
+		return this.dsh_Dtl_ID;
 	}
 
-	public void setDshDtlId(long dshDtlId) {
-		this.dshDtlId = dshDtlId;
+	public void setDsh_Dtl_ID(int dsh_Dtl_ID) {
+		this.dsh_Dtl_ID = dsh_Dtl_ID;
 	}
 
 	public String getDshAvlStsCde() {
@@ -64,12 +65,12 @@ public class DshDtl implements Serializable {
 		this.dshAvlStsCde = dshAvlStsCde;
 	}
 
-	public BigDecimal getDshPrc() {
-		return this.dshPrc;
+	public BigDecimal getDsh_PRc() {
+		return this.dsh_PRc;
 	}
 
-	public void setDshPrc(BigDecimal dshPrc) {
-		this.dshPrc = dshPrc;
+	public void setDsh_PRc(BigDecimal dsh_PRc) {
+		this.dsh_PRc = dsh_PRc;
 	}
 
 	public DshMtda getDshMtda() {
@@ -88,26 +89,48 @@ public class DshDtl implements Serializable {
 		this.resDtl = resDtl;
 	}
 
-	public List<UsrDhLik> getUsrDhLiks() {
-		return this.usrDhLiks;
+	public List<UsrDshCmt> getUsrDshCmts() {
+		return this.usrDshCmts;
 	}
 
-	public void setUsrDhLiks(List<UsrDhLik> usrDhLiks) {
-		this.usrDhLiks = usrDhLiks;
+	public void setUsrDshCmts(List<UsrDshCmt> usrDshCmts) {
+		this.usrDshCmts = usrDshCmts;
 	}
 
-	public UsrDhLik addUsrDhLik(UsrDhLik usrDhLik) {
-		getUsrDhLiks().add(usrDhLik);
-		usrDhLik.setDshDtl(this);
+	public UsrDshCmt addUsrDshCmt(UsrDshCmt usrDshCmt) {
+		getUsrDshCmts().add(usrDshCmt);
+		usrDshCmt.setDshDtl(this);
 
-		return usrDhLik;
+		return usrDshCmt;
 	}
 
-	public UsrDhLik removeUsrDhLik(UsrDhLik usrDhLik) {
-		getUsrDhLiks().remove(usrDhLik);
-		usrDhLik.setDshDtl(null);
+	public UsrDshCmt removeUsrDshCmt(UsrDshCmt usrDshCmt) {
+		getUsrDshCmts().remove(usrDshCmt);
+		usrDshCmt.setDshDtl(null);
 
-		return usrDhLik;
+		return usrDshCmt;
+	}
+
+	public List<UsrDshLik> getUsrDshLiks() {
+		return this.usrDshLiks;
+	}
+
+	public void setUsrDshLiks(List<UsrDshLik> usrDshLiks) {
+		this.usrDshLiks = usrDshLiks;
+	}
+
+	public UsrDshLik addUsrDshLik(UsrDshLik usrDshLik) {
+		getUsrDshLiks().add(usrDshLik);
+		usrDshLik.setDshDtl(this);
+
+		return usrDshLik;
+	}
+
+	public UsrDshLik removeUsrDshLik(UsrDshLik usrDshLik) {
+		getUsrDshLiks().remove(usrDshLik);
+		usrDshLik.setDshDtl(null);
+
+		return usrDshLik;
 	}
 
 	public List<UsrDshRvw> getUsrDshRvws() {

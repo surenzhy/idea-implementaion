@@ -16,19 +16,17 @@ public class DshCatTyp implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="DSH_CAT_TYP_ID")
-	private long dshCatTypId;
-
-	//bi-directional many-to-one association to DshCat
-	@ManyToOne
-	@JoinColumn(name="DSH_CAT_ID")
-	private DshCat dshCat;
+	private long dsh_Cat_Typ_ID;
 
 	//bi-directional many-to-one association to DshTyp
 	@ManyToOne
 	@JoinColumn(name="DSH_TYP_ID")
 	private DshTyp dshTyp;
+
+	//bi-directional many-to-one association to DshCat
+	@ManyToOne
+	@JoinColumn(name="Dsh_Cat_ID")
+	private DshCat dshCat;
 
 	//bi-directional many-to-one association to DshMtda
 	@OneToMany(mappedBy="dshCatTyp")
@@ -37,20 +35,12 @@ public class DshCatTyp implements Serializable {
 	public DshCatTyp() {
 	}
 
-	public long getDshCatTypId() {
-		return this.dshCatTypId;
+	public long getDsh_Cat_Typ_ID() {
+		return this.dsh_Cat_Typ_ID;
 	}
 
-	public void setDshCatTypId(long dshCatTypId) {
-		this.dshCatTypId = dshCatTypId;
-	}
-
-	public DshCat getDshCat() {
-		return this.dshCat;
-	}
-
-	public void setDshCat(DshCat dshCat) {
-		this.dshCat = dshCat;
+	public void setDsh_Cat_Typ_ID(long dsh_Cat_Typ_ID) {
+		this.dsh_Cat_Typ_ID = dsh_Cat_Typ_ID;
 	}
 
 	public DshTyp getDshTyp() {
@@ -59,6 +49,14 @@ public class DshCatTyp implements Serializable {
 
 	public void setDshTyp(DshTyp dshTyp) {
 		this.dshTyp = dshTyp;
+	}
+
+	public DshCat getDshCat() {
+		return this.dshCat;
+	}
+
+	public void setDshCat(DshCat dshCat) {
+		this.dshCat = dshCat;
 	}
 
 	public List<DshMtda> getDshMtdas() {

@@ -2,7 +2,7 @@ package com.dishdiscovery.dao.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -16,59 +16,50 @@ public class UsrDshRvw implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="USR_DSH_RVW_ID")
-	private long usrDshRvwId;
+	private int usrDshRvwId;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CRE_TMP")
-	private Timestamp creTmp;
-
-	@Column(name="USR_DSH_CMT")
-	private String usrDshCmt;
-
-	//bi-directional many-to-one association to DshDtl
-	@ManyToOne
-	@JoinColumn(name="DSH_DTL_ID")
-	private DshDtl dshDtl;
+	private Date creTmp;
 
 	//bi-directional many-to-one association to UsrMtda
 	@ManyToOne
 	@JoinColumn(name="USR_ID")
 	private UsrMtda usrMtda;
 
+	//bi-directional many-to-one association to AnsSet
+	@ManyToOne
+	@JoinColumn(name="ANS_ID")
+	private AnsSet ansSet;
+
+	//bi-directional many-to-one association to QsnSet
+	@ManyToOne
+	@JoinColumn(name="QSN_ID")
+	private QsnSet qsnSet;
+
+	//bi-directional many-to-one association to DshDtl
+	@ManyToOne
+	@JoinColumn(name="DSH_DTL_ID")
+	private DshDtl dshDtl;
+
 	public UsrDshRvw() {
 	}
 
-	public long getUsrDshRvwId() {
+	public int getUsrDshRvwId() {
 		return this.usrDshRvwId;
 	}
 
-	public void setUsrDshRvwId(long usrDshRvwId) {
+	public void setUsrDshRvwId(int usrDshRvwId) {
 		this.usrDshRvwId = usrDshRvwId;
 	}
 
-	public Timestamp getCreTmp() {
+	public Date getCreTmp() {
 		return this.creTmp;
 	}
 
-	public void setCreTmp(Timestamp creTmp) {
+	public void setCreTmp(Date creTmp) {
 		this.creTmp = creTmp;
-	}
-
-	public String getUsrDshCmt() {
-		return this.usrDshCmt;
-	}
-
-	public void setUsrDshCmt(String usrDshCmt) {
-		this.usrDshCmt = usrDshCmt;
-	}
-
-	public DshDtl getDshDtl() {
-		return this.dshDtl;
-	}
-
-	public void setDshDtl(DshDtl dshDtl) {
-		this.dshDtl = dshDtl;
 	}
 
 	public UsrMtda getUsrMtda() {
@@ -77,6 +68,30 @@ public class UsrDshRvw implements Serializable {
 
 	public void setUsrMtda(UsrMtda usrMtda) {
 		this.usrMtda = usrMtda;
+	}
+
+	public AnsSet getAnsSet() {
+		return this.ansSet;
+	}
+
+	public void setAnsSet(AnsSet ansSet) {
+		this.ansSet = ansSet;
+	}
+
+	public QsnSet getQsnSet() {
+		return this.qsnSet;
+	}
+
+	public void setQsnSet(QsnSet qsnSet) {
+		this.qsnSet = qsnSet;
+	}
+
+	public DshDtl getDshDtl() {
+		return this.dshDtl;
+	}
+
+	public void setDshDtl(DshDtl dshDtl) {
+		this.dshDtl = dshDtl;
 	}
 
 }
