@@ -9,8 +9,8 @@ public class UserLikeVO implements Serializable {
 	private static final long serialVersionUID = -8239224968929247314L;
 	
 	private long usrLikId;
-	private long usrDshLik;
-	private long usrDshUnlik;
+	private int usrDshLik;
+	private int usrDshUnlik;
 	private UserDetailsVO userDetail;
 	
 	public long getUsrLikId() {
@@ -19,16 +19,16 @@ public class UserLikeVO implements Serializable {
 	public void setUsrLikId(long usrLikId) {
 		this.usrLikId = usrLikId;
 	}
-	public long getUsrDshLik() {
+	public int getUsrDshLik() {
 		return usrDshLik;
 	}
-	public void setUsrDshLik(long usrDshLik) {
+	public void setUsrDshLik(int usrDshLik) {
 		this.usrDshLik = usrDshLik;
 	}
-	public long getUsrDshUnlik() {
+	public int getUsrDshUnlik() {
 		return usrDshUnlik;
 	}
-	public void setUsrDshUnlik(long usrDshUnlik) {
+	public void setUsrDshUnlik(int usrDshUnlik) {
 		this.usrDshUnlik = usrDshUnlik;
 	}
 	public UserDetailsVO getUserDetail() {

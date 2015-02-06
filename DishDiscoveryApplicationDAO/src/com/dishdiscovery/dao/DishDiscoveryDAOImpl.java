@@ -76,7 +76,7 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 
 		DshDtl dishDetailBO = (DshDtl) sessionFactory.openSession()
 				.createCriteria(DshDtl.class)
-				.add(Restrictions.idEq(Long.valueOf(dishId))).uniqueResult();
+				.add(Restrictions.idEq(Integer.valueOf(dishId))).uniqueResult();
 
 		return DishDetailMapper.convertDBObjectToBusinessObject(dishDetailBO);
 	}

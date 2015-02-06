@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dishdiscovery.dao.data.DishSummaryVO;
+import com.dishdiscovery.dao.data.ResAddressVO;
 import com.dishdiscovery.dao.data.RestDetailVO;
 import com.dishdiscovery.dao.entity.DshDtl;
 import com.dishdiscovery.dao.entity.DshMtda;
 import com.dishdiscovery.dao.entity.ResDtl;
+import com.dishdiscovery.dao.entity.ResDtlMtda;
 
 public class DishSummaryMapper {
 	
@@ -30,9 +32,17 @@ public class DishSummaryMapper {
 				if(restDtl!=null){
 					restVO.setResDtlId(restDtl.getRes_dtl_id());
 					restVO.setResNme(restDtl.getRes_nme());
-					restVO.setResAddr(restDtl.getResDtlMtdas().get(0).getResAddr());
-					restVO.setMblNbr(restDtl.getResDtlMtdas().get(0).getMblNbr());
-					restVO.setLndLneNbr(restDtl.getResDtlMtdas().get(0).getLndLneNbr());
+					List<ResDtlMtda> resMtdaList = restDtl.getResDtlMtdas();
+					List<ResAddressVO> resAddrList = new ArrayList<ResAddressVO>(0);
+					
+					for (ResDtlMtda resDtlMtda : resMtdaList) {
+						ResAddressVO resAddr = new ResAddressVO();
+						resAddr.setResAddr(resDtlMtda.getResAddr());
+						resAddr.setMblNbr(resDtlMtda.getMblNbr());
+						resAddr.setLndLneNbr(resDtlMtda.getLndLneNbr());
+						resAddrList.add(resAddr);
+					}
+					restVO.setResAddrList(resAddrList);
 				}
 				summaryVo.setRestDetailVO(restVO);
 				dishSummaryList.add(summaryVo);

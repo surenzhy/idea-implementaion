@@ -3,18 +3,24 @@ package com.dishdiscovery.dao.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dishdiscovery.dao.data.AnsSetVO;
 import com.dishdiscovery.dao.data.DishCatVO;
 import com.dishdiscovery.dao.data.DishDetailVO;
 import com.dishdiscovery.dao.data.DishTypeVO;
+import com.dishdiscovery.dao.data.QsnSetVO;
+import com.dishdiscovery.dao.data.ResAddressVO;
 import com.dishdiscovery.dao.data.RestDetailVO;
 import com.dishdiscovery.dao.data.UserDetailsVO;
 import com.dishdiscovery.dao.data.UserLikeVO;
 import com.dishdiscovery.dao.data.UserRivewVO;
+import com.dishdiscovery.dao.entity.AnsSet;
 import com.dishdiscovery.dao.entity.DshCat;
 import com.dishdiscovery.dao.entity.DshCatTyp;
 import com.dishdiscovery.dao.entity.DshDtl;
 import com.dishdiscovery.dao.entity.DshTyp;
+import com.dishdiscovery.dao.entity.QsnSet;
 import com.dishdiscovery.dao.entity.ResDtl;
+import com.dishdiscovery.dao.entity.ResDtlMtda;
 import com.dishdiscovery.dao.entity.UsrDshLik;
 import com.dishdiscovery.dao.entity.UsrDshRvw;
 
@@ -49,9 +55,20 @@ public class DishDetailMapper {
 		if(resDtl!=null){
 			resDetailVO.setResDtlId(resDtl.getRes_dtl_id());
 			resDetailVO.setResNme(resDtl.getRes_nme());
-			resDetailVO.setResAddr(resDtl.getResDtlMtdas().get(0).getResAddr());
-			resDetailVO.setMblNbr(resDtl.getResDtlMtdas().get(0).getMblNbr());
-			resDetailVO.setLndLneNbr(resDtl.getResDtlMtdas().get(0).getLndLneNbr());
+			
+			List<ResDtlMtda> resMtdaList = resDtl.getResDtlMtdas();
+			List<ResAddressVO> resAddrList = new ArrayList<ResAddressVO>(0);
+			
+			for (ResDtlMtda resDtlMtda : resMtdaList) {
+				ResAddressVO resAddr = new ResAddressVO();
+				resAddr.setResAddr(resDtlMtda.getResAddr());
+				resAddr.setMblNbr(resDtlMtda.getMblNbr());
+				resAddr.setLndLneNbr(resDtlMtda.getLndLneNbr());
+				resAddrList.add(resAddr);
+			}
+			
+			resDetailVO.setResAddrList(resAddrList);
+			
 		}
 		
 		dishDetail.setRestDetailVO(resDetailVO);
@@ -67,9 +84,27 @@ public class DishDetailMapper {
 		for (UsrDshRvw userReview : userDshBO) {
 			UserRivewVO userReviewObj = new UserRivewVO();
 			userReviewObj.setCreTmp(userReview.getCreTmp());
-			//userReviewObj.setUsrCmt(userReview.getUsrDshCmt());//TODO
+			//userReviewObj.setUsrCmt(userReview.g);//TODO
 			userReviewObj.setUsrRvwId(userReview.getUsrDshRvwId());
-
+			
+			QsnSet qsnSet = userReview.getQsnSet();
+			
+			if(qsnSet!=null){
+				QsnSetVO qsnVO = new QsnSetVO();
+				qsnVO.setQsnId(qsnSet.getQsnId());
+				qsnVO.setQsnName(qsnSet.getQsnNme());
+				userReviewObj.setQsn(qsnVO);
+			}
+			
+			AnsSet ansSet = userReview.getAnsSet();
+			
+			if(ansSet!=null){
+				AnsSetVO ansVo = new AnsSetVO();
+				ansVo.setAnsId(ansSet.getAnsId());
+				ansVo.setAnsVal(ansSet.getAnsVal());
+				userReviewObj.setAns(ansVo);
+			}
+			
 			// Populating User Details meta data.
 			UserDetailsVO userDetails = new UserDetailsVO();
 			userDetails.setUsrId(userReview.getUsrMtda().getUsrId());
@@ -94,10 +129,8 @@ public class DishDetailMapper {
 		for (UsrDshLik userDishLike : userDshLikBO) {
 
 			UserLikeVO userLikeObj = new UserLikeVO();
-			/*userLikeObj.setUsrDshLik(Long.parseLong(userDishLike.getUsrDshLik()
-					.toString()));
-			userLikeObj.setUsrDshUnlik(Long.parseLong(userDishLike
-					.getUsrDshUnlik().toString()));*///TODO
+			userLikeObj.setUsrDshLik(userDishLike.getUsrDshLik());
+			userLikeObj.setUsrDshUnlik(userDishLike.getUsrDshUnlik());
 			userLikeObj.setUsrLikId(userDishLike.getUsrDshLikId());
 
 			// Populating User Details meta data.

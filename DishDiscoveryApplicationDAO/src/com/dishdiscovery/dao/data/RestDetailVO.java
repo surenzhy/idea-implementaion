@@ -1,14 +1,14 @@
 package com.dishdiscovery.dao.data;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class RestDetailVO implements Serializable {
 	private static final long serialVersionUID = 1034110060879168810L;
 	private long resDtlId;
 	private String resNme;
-	private String resAddr;
-	private String mblNbr;
-	private String lndLneNbr;
+	
+	List<ResAddressVO> resAddrList;
 
 	public long getResDtlId() {
 		return resDtlId;
@@ -26,28 +26,13 @@ public class RestDetailVO implements Serializable {
 		this.resNme = resNme;
 	}
 
-	public String getResAddr() {
-		return resAddr;
+	public List<ResAddressVO> getResAddrList() {
+		return resAddrList;
 	}
 
-	public void setResAddr(String resAddr) {
-		this.resAddr = resAddr;
+	public void setResAddrList(List<ResAddressVO> resAddrList) {
+		this.resAddrList = resAddrList;
 	}
 
-	public String getMblNbr() {
-		return mblNbr;
-	}
-
-	public void setMblNbr(String mblNbr) {
-		this.mblNbr = mblNbr;
-	}
-
-	public String getLndLneNbr() {
-		return lndLneNbr;
-	}
-
-	public void setLndLneNbr(String lndLneNbr) {
-		this.lndLneNbr = lndLneNbr;
-	}
 
 }

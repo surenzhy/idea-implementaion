@@ -8,21 +8,17 @@ public class UserRivewVO implements Serializable {
 	private static final long serialVersionUID = -7509510784268800398L;
 	
 	private long usrRvwId;
-	private String usrCmt;
 	private Date creTmp;
 	private UserDetailsVO userDetail;
+	
+	private QsnSetVO qsn;
+	private AnsSetVO ans;
 	
 	public long getUsrRvwId() {
 		return usrRvwId;
 	}
 	public void setUsrRvwId(long usrRvwId) {
 		this.usrRvwId = usrRvwId;
-	}
-	public String getUsrCmt() {
-		return usrCmt;
-	}
-	public void setUsrCmt(String usrCmt) {
-		this.usrCmt = usrCmt;
 	}
 	public Date getCreTmp() {
 		return creTmp;
@@ -36,6 +32,19 @@ public class UserRivewVO implements Serializable {
 	public void setUserDetail(UserDetailsVO userDetail) {
 		this.userDetail = userDetail;
 	}
+	public QsnSetVO getQsn() {
+		return qsn;
+	}
+	public void setQsn(QsnSetVO qsn) {
+		this.qsn = qsn;
+	}
+	public AnsSetVO getAns() {
+		return ans;
+	}
+	public void setAns(AnsSetVO ans) {
+		this.ans = ans;
+	}
+	
 	
 	
 }
