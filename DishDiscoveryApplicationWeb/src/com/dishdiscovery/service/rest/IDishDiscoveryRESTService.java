@@ -11,6 +11,6 @@ public interface IDishDiscoveryRESTService {
 	public GetDishCategoryResponse getAllDishCategory();
 	public GetDishSummaryResponse searchDishesByName(String name, int pageSize, int pageNo);
 	public GetDishDetailResponse getDishDetail(String dishId);
-	public GetDishListByCategoryResponse getDishListByCategory(CusineType cusineType,
+	public GetDishListByCategoryResponse searchDishByCategory(CusineType cusineType,
 			DishType dishType, String dishName, int pageSize, int pageNo);
 }

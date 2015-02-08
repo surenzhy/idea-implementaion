@@ -71,9 +71,9 @@ public class DishDiscoveryRESTServiceImpl implements IDishDiscoveryRESTService {
 
 	@Override
 	@GET
-	@Path("categories/{cusineType}/{dishType}/{dishName}/{pgeSize}/{pageNo}")
+	@Path("category/{cusineType}/{dishType}/{dishName}/{pgeSize}/{pageNo}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public GetDishListByCategoryResponse getDishListByCategory(
+	public GetDishListByCategoryResponse searchDishByCategory(
 			@PathParam("cusineType") CusineType cusineType,
 			@PathParam("dishType") DishType dishType,
 			@PathParam("dishName") String dishName,
