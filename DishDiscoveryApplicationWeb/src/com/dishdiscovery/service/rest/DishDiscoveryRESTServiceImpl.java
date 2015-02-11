@@ -59,12 +59,13 @@ public class DishDiscoveryRESTServiceImpl implements IDishDiscoveryRESTService {
 	}
 
 	@GET
-	@Path("dish/detail/{dishId}")
+	@Path("dish/detail/{dishId}/{restId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public GetDishDetailResponse getDishDetail(
-			@PathParam("dishId") String dishId) {
+			@PathParam("dishId") String dishId, @PathParam("restId") String restId) {
 		GetDishDetailRequest dishDetailsRequest = new GetDishDetailRequest();
 		dishDetailsRequest.setDishId(dishId);
+		dishDetailsRequest.setRestId(restId);
 		return dishDetailHandler.execute(dishDetailsRequest);
 
 	}

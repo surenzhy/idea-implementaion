@@ -72,11 +72,11 @@ public class DishDiscoveryDAOImpl implements IDishDiscoveryDAO {
 		return DishSummaryMapper.convertDBObjectToBusinessObject(disMtdaList);
 	}
 
-	public DishDetailVO getDishDetails(String dishId) throws DAOException {
+	public DishDetailVO getDishDetails(String dishId, String restId) throws DAOException {
 
 		DshDtl dishDetailBO = (DshDtl) sessionFactory.openSession()
 				.createCriteria(DshDtl.class)
-				.add(Restrictions.idEq(Integer.valueOf(dishId))).uniqueResult();
+				.add(Restrictions.idEq(Integer.valueOf(dishId))).add(Restrictions.eq("resDtl.res_dtl_id", Integer.valueOf(restId))).uniqueResult();
 
 		return DishDetailMapper.convertDBObjectToBusinessObject(dishDetailBO);
 	}

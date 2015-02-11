@@ -23,7 +23,8 @@ public class GetDishDetailHandler extends DefaultRequestHandler<GetDishDetailReq
 			GetDishDetailRequest request) {
 		
 		String dishId = request.getDishId();
-		DishDetailVO dishDetails = dishService.getDishDetails(dishId);
+		String restId = request.getRestId();
+		DishDetailVO dishDetails = dishService.getDishDetails(dishId, restId);
 		return convertServiceResponseToWebResponse(dishDetails);
 	}
 

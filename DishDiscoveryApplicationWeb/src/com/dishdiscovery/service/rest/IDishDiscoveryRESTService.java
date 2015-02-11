@@ -10,7 +10,7 @@ import com.dishdiscovery.service.rest.response.data.GetDishSummaryResponse;
 public interface IDishDiscoveryRESTService {
 	public GetDishCategoryResponse getAllDishCategory();
 	public GetDishSummaryResponse searchDishesByName(String name, int pageSize, int pageNo);
-	public GetDishDetailResponse getDishDetail(String dishId);
+	public GetDishDetailResponse getDishDetail(String dishId, String restId);
 	public GetDishListByCategoryResponse searchDishByCategory(CusineType cusineType,
 			DishType dishType, String dishName, int pageSize, int pageNo);
 }
